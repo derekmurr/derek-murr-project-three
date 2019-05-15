@@ -9,5 +9,28 @@
   padding: 0;
   margin: 3rem 0;
   display: flex;
-  justify-content: space-between;
+
+}
+
+fieldset {
+  width: 30%;
+  border: none;
+  padding: 0;
+}
+
+label, 
+select {
+  display: block;
+}
+
+p.label {
+  font-style: italic;
+  font-family: .8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 0;
+}
+
+.demo {
+  margin-bottom: 0;
 }

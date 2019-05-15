@@ -178,4 +178,42 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   clip: rect(0 0 0);
   overflow: hidden;
 }
+
+.wrapper {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.choice-form {
+  width: 100%;
+  padding: 0;
+  margin: 3rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+fieldset {
+  width: 30%;
+  border: none;
+  padding: 0;
+}
+
+label,
+select {
+  display: block;
+}
+
+p.label {
+  font-style: italic;
+  font-family: .8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 0;
+}
+
+.demo {
+  margin-bottom: 0;
+}
 /*# sourceMappingURL=styles.css.map */

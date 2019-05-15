@@ -21,8 +21,22 @@
       </div>
 
       <form action="" id="choice-form" class="choice-form">
-        <select name="scale-choice" id="scale-choice" class="choice-dropdown"></select>
-        <select name="font-choice" id="font-choice" class="choice-dropdown"></select>
+        <fieldset>
+          <label for="scale-choice">Choose a scale:</label>
+          <select name="scale-choice" id="scale-choice" class="choice-dropdown" data-choice-type="scale">
+            <option value=""></option>
+            <option value="golden">Golden Ratio</option>
+            <option value="musical">Musical Ratio</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label for="font-choice">Choose a font:</label>
+          <select name="font-choice" id="font-choice" class="choice-dropdown" data-choice-type="font">
+            <option value=""></option>
+            <option value="arial">Arial</option>
+            <option value="georgia">Georgia</option>
+          </select>
+        </fieldset>
       </form>
 
       <div id="sample-text"></div>
@@ -30,9 +44,12 @@
   </main>
 
   <footer>
-    <p>copyright © 2019 Derek Murr | HackerYou Project 3</p>
+    <div class="wrapper">
+      
+    </div>
   </footer>
 
-  <script url="./js/scripts.js"></script>
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
+  <script src="./js/scripts.js"></script>
 </body>
 </html>
