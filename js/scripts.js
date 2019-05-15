@@ -1,20 +1,22 @@
 const typeScale = {};
 
 typeScale.setUpVariables = function() {
-  typeScale.htmlTagSizes = {
-    p: 1,
-    h1: 1,
-    h2: 1,
-    h3: 1,
-    h4: 1,
-    h5: 1,
-    h6: 1,
-    small: 1
-  };
+  typeScale.htmlTagSizes = [
+    // { tag: 'p', fontSize: 1},
+    { tag: 'p', fontSize: 0 },
+    { tag: 'h6', fontSize: 0 },
+    { tag: 'h5', fontSize: 0 },
+    { tag: 'h4', fontSize: 0 },
+    { tag: 'h3', fontSize: 0 },
+    { tag: 'h2', fontSize: 0 },
+    { tag: 'h1', fontSize: 0 }
+  ];
 
   typeScale.typeRatios = {
-    musical: 2,
-    golden: 1.618034
+    majSecond: 1.125,
+    majThird: 1.250,
+    augFourth: 1.414,
+    golden: 1.618
   };
 
   typeScale.userChoices = {
@@ -24,39 +26,43 @@ typeScale.setUpVariables = function() {
 };
 
 typeScale.updateSampleText = function(font) {
+  // tag sizes array is calculated from smallest to biggest, but we want to display it to the user from biggest to smallest, so let's make a working duplicate of that array 
+  let sampleArray = typeScale.htmlTagSizes;
+  
   // create the html output of all our sample tags and labels, using the font parameter and the tag sizes we've calculated
-  const sampleString = 
-  `<h1 class="demo" style="font-size: ${typeScale.htmlTagSizes.h1}rem; font-family: ${font};">Lorem Ipsum Dolor Sit Amet</h1>
-  <p class="label">H1 size: ${typeScale.htmlTagSizes.h1} rem</p>
-  <h2 class="demo" style="font-size: ${typeScale.htmlTagSizes.h2}rem; font-family: ${font};">Lorem Ipsum Dolor Sit Amet</h2>
-  <p class="label">H2 size: ${typeScale.htmlTagSizes.h2} rem</p>
-  <h3 class="demo" style="font-size: ${typeScale.htmlTagSizes.h3}rem; font-family: ${font};">Lorem Ipsum Dolor Sit Amet</h3>
-  <p class="label">H3 size: ${typeScale.htmlTagSizes.h3} rem</p>
-  <h4 class="demo" style="font-size: ${typeScale.htmlTagSizes.h4}rem; font-family: ${font};">Lorem Ipsum Dolor Sit Amet</h4>
-  <p class="label">H4 size: ${typeScale.htmlTagSizes.h4} rem</p>
-  <h5 class="demo" style="font-size: ${typeScale.htmlTagSizes.h5}rem; font-family: ${font};">Lorem Ipsum Dolor Sit Amet</h5>
-  <p class="label">H5 size: ${typeScale.htmlTagSizes.h5} rem</p>
-  <h6 class="demo" style="font-size: ${typeScale.htmlTagSizes.h6}rem; font-family: ${font};">Lorem Ipsum Dolor Sit Amet</h6>
-  <p class="label">H6 size: ${typeScale.htmlTagSizes.h6} rem</p>
-  <p class="demo" style="font-size: ${typeScale.htmlTagSizes.p}rem; font-family: ${font};">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad pariatur consequatur maiores illo quos sapiente omnis iste nostrum eos quis ipsa sed, eius saepe voluptatem voluptatibus animi recusandae molestias molestiae voluptatum tempore? Nemo aliquam mollitia quae hic quis tenetur consectetur necessitatibus deserunt reprehenderit, inventore quos totam, tempore molestias facilis animi.</p>
-  <p class="label">Body copy (p tag) size: ${typeScale.htmlTagSizes.p} rem</p>
-  <p class="demo" style="font-size: ${typeScale.htmlTagSizes.small}rem; font-family: ${font};">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-  <p class="label">Small copy (captions, labels) size: ${typeScale.htmlTagSizes.small} rem</p>`;
+  // a new array that will hold the string defining each html element
+  let textArray = [];
+  sampleArray.forEach( htmlTag => {
+    // for each item in our tag sizes array, add a string to our text array with the right text and values
+    textArray.push(`<${htmlTag.tag} class="demo" style="font-size: ${htmlTag.fontSize}rem; font-family: ${font};">Lorem ipsum dolor sit amet</${htmlTag.tag}><p class="label">${htmlTag.tag} size: ${htmlTag.fontSize} rem</p>`);
+  });
+  // reverse that text array so it goes from biggest to smallest
+  textArray.reverse();
+
+  // flatten that text array so it's one big string
+  const sampleString = textArray.reduce((finalString, currentString) => {
+    return finalString + currentString;
+  });
+  
+  // return our html output to be added to the DOM
   return sampleString;
 };
 
 typeScale.updateFontSizes = function(chosenScale) {
   //the choice of scale determines the ratio used in the math
   const ratio = typeScale.typeRatios[chosenScale];
-  // use the ratio to set the sizes of each html element
-  typeScale.htmlTagSizes.small = ratio * (1 / 3);
-  typeScale.htmlTagSizes.p = ratio * (2 / 3);
-  typeScale.htmlTagSizes.h6 = ratio * (3 / 3);
-  typeScale.htmlTagSizes.h5 = ratio * (4 / 3);
-  typeScale.htmlTagSizes.h4 = ratio * (5 / 3);
-  typeScale.htmlTagSizes.h3 = ratio * (6 / 3);
-  typeScale.htmlTagSizes.h2 = ratio * (7 / 3);
-  typeScale.htmlTagSizes.h1 = ratio * (8 / 3);
+
+  // use the ratio to set the sizes of each html element  
+  for (let i = 0; i < typeScale.htmlTagSizes.length; i++) {
+    // typeScale.htmlTagSizes[i].fontSize = (ratio * ( (i + 1) / typeScale.htmlTagSizes.length) + 0.5 ).toFixed(2);
+    if (i === 0) {
+      // our base size: 1 rem
+      typeScale.htmlTagSizes[i].fontSize = 1;
+    } else {
+      // current size = the previous size multiplied by the ratio, rounded to two decimals
+      typeScale.htmlTagSizes[i].fontSize = (typeScale.htmlTagSizes[i - 1].fontSize * ratio ).toFixed(2);
+    }
+  }
 }
 
 typeScale.displaySample = function(font) {

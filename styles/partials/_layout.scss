@@ -1,3 +1,7 @@
+body {
+  font-size: 125%;
+}
+
 .wrapper {
   width: 90%;
   max-width: 1000px;
@@ -33,4 +37,5 @@ p.label {
 
 .demo {
   margin-bottom: 0;
+  line-height: 1.4;
 }
