@@ -183,6 +183,14 @@ body {
   font-size: 125%;
 }
 
+.intro p {
+  line-height: 1.5;
+}
+
+.button-begin {
+  padding: .5em 2em;
+}
+
 .wrapper {
   width: 90%;
   max-width: 1000px;
@@ -209,16 +217,44 @@ select {
   display: block;
 }
 
-p.label {
-  font-style: italic;
+.sample-label {
   font-family: .8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-top: 0;
+  font-weight: 200;
+  margin: 0;
+  text-align: right;
 }
 
 .demo {
-  margin-bottom: 0;
-  line-height: 1.4;
+  margin: 0;
+  line-height: .75em;
+}
+
+.hidden {
+  display: none;
+}
+
+.sample-text {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
+  grid-gap: 1rem;
+}
+
+.label-box {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.sample-text-box {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: .5em;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
 }
 /*# sourceMappingURL=styles.css.map */

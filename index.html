@@ -16,32 +16,43 @@
 
   <main>
     <div class="wrapper">
-      <div class="intro">
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem accusamus eos distinctio dolores doloribus adipisci ut eius commodi nisi blanditiis, deserunt, dolorum alias eveniet corporis, explicabo omnis tenetur est consectetur porro dicta esse earum animi? Explicabo doloribus voluptatem delectus non, quidem amet modi doloremque dolor optio, possimus dolore perferendis omnis.</p>
+      <div id="intro" class="intro">
+        <p>Are you a developer, but you ain’t no designer? Do you need to style your text and just need it to look good but don’t want to think too hard about it? When designers start talking about “proportion” and “vertical rhythm” do you break out in hives? Type Scale Generator has got your back, friend. Just choose a scale and bam: you’ve got sizes for body copy and every level of heading that are gonna look great together. Then just copy those sizes into your project’s CSS, and get on with your life. Easy peasy.</p>
+        <button id="button-begin" class="button-begin">Let’s get started!</button>
       </div>
+      <div id="tips" class="intro hidden">
+        <p>Just choose a scale and a font style, and we’ll do the rest. Pro tip: the further down the list of scales you go, the more dramatic the difference between your body copy and headings. So choices further down are better if your headlines are short and punchy, while wordier sites should stay close to the top of the list!</p>
+      </div>
+      <div id="sample-block" class="hidden">
+        <form action="" id="choice-form" class="choice-form">
+          <fieldset>
+            <label for="scale-choice">Choose a scale:</label>
+            <select name="scale-choice" id="scale-choice" class="choice-dropdown" data-choice-type="scale">
+              <option value=""></option>
+              <option value="minSecond">Minor Second</option>
+              <option value="majSecond">Major Second</option>
+              <option value="minThird">Minor Third</option>
+              <option value="majThird">Major Third</option>
+              <option value="perFourth">Perfect Fourth</option>
+              <option value="augFourth">Augmented Fourth</option>
+              <option value="golden">Golden Ratio</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <label for="font-choice">Choose a font:</label>
+            <select name="font-choice" id="font-choice" class="choice-dropdown" data-choice-type="font">
+              <option value=""></option>
+              <option value="arial">Sans-serif</option>
+              <option value="georgia">Serif</option>
+            </select>
+          </fieldset>
+        </form>
 
-      <form action="" id="choice-form" class="choice-form">
-        <fieldset>
-          <label for="scale-choice">Choose a scale:</label>
-          <select name="scale-choice" id="scale-choice" class="choice-dropdown" data-choice-type="scale">
-            <option value=""></option>
-            <option value="majSecond">Major Second</option>
-            <option value="majThird">Major Third</option>
-            <option value="augFourth">Augmented Fourth</option>
-            <option value="golden">Golden Ratio</option>
-          </select>
-        </fieldset>
-        <fieldset>
-          <label for="font-choice">Choose a font:</label>
-          <select name="font-choice" id="font-choice" class="choice-dropdown" data-choice-type="font">
-            <option value=""></option>
-            <option value="arial">Sans-serif</option>
-            <option value="georgia">Serif</option>
-          </select>
-        </fieldset>
-      </form>
+        <ul id="sample-text" class="sample-text">
 
-      <div id="sample-text"></div>
+        </ul>
+        <button id="button-get-css" class="button-get-css hidden">Grab the CSS!</button>
+      </div>
     </div>
   </main>
 
