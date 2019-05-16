@@ -275,7 +275,7 @@ select {
   font-size: var(--demo-font-size-small);
 }
 
-.demo-body {
+.demo-p {
   font-size: var(--demo-font-size-p);
 }
 
