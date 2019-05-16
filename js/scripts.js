@@ -2,14 +2,14 @@ const typeScale = {};
 
 typeScale.setUpVariables = function() {
   typeScale.htmlTagSizes = [
-    { tag: 'p', fontSize: 0 },
-    { tag: 'p', fontSize: 0 },
-    { tag: 'h6', fontSize: 0 },
-    { tag: 'h5', fontSize: 0 },
-    { tag: 'h4', fontSize: 0 },
-    { tag: 'h3', fontSize: 0 },
-    { tag: 'h2', fontSize: 0 },
-    { tag: 'h1', fontSize: 0 }
+    { tag: 'p', fontSize: 0, class: 'demo-small' },
+    { tag: 'p', fontSize: 0, class: 'demo-body' },
+    { tag: 'h6', fontSize: 0, class: 'demo-h6' },
+    { tag: 'h5', fontSize: 0, class: 'demo-h5' },
+    { tag: 'h4', fontSize: 0, class: 'demo-h4' },
+    { tag: 'h3', fontSize: 0, class: 'demo-h3' },
+    { tag: 'h2', fontSize: 0, class: 'demo-h2' },
+    { tag: 'h1', fontSize: 0, class: 'demo-h1' }
   ];
 
   typeScale.typeRatios = {
@@ -40,7 +40,7 @@ typeScale.updateSampleText = function(font) {
     // for each item in our tag sizes array, add a string to our text array with the right text and values
     outputTextArray.push(`<li class="label-box"><p class="sample-label">${htmlTag.tag}: ${htmlTag.fontSize} rem</p></li><li class="sample-text-box"><${htmlTag.tag} class="demo" style="font-size: ${htmlTag.fontSize}rem; font-family: ${font};">Lorem ipsum dolor sit amet</${htmlTag.tag}></li>`);
   });
-  // reverse that text array so it goes from biggest to smallest, which is how we want the sample to display
+  // reverse that text array so it goes from biggest to smallest, ie, the order we want the sample to display
   outputTextArray.reverse();
 
   // flatten that text array so it's one big string
@@ -62,27 +62,34 @@ typeScale.updateFontSizes = function(chosenScale) {
     // it's i - 1 because our body copy is second in the array, and we want it to always be 1rem, so it should have a scale factor of zero, while we want the first array item to be a smaller size option, so its scale factor is negative one.
     typeScale.htmlTagSizes[i].fontSize = (Math.pow(ratio, i-1) ).toFixed(2);
   }
-}
 
-typeScale.displaySample = function(font) {
-  // grab the sample-text div and add the html to it that's returned from the update sample text method
-  $('#sample-text').html(typeScale.updateSampleText(font));
-  $('#button-get-css').removeClass('hidden');
-};
+  // update our css to reflect the new font sizes
+  typeScale.updateCSS();
+}
 
 typeScale.updateCSS = function() {
   let tagArray = typeScale.htmlTagSizes;
   let cssArray = [];
   tagArray.forEach( htmlTag => {
-    cssArray.push(`${htmlTag.tag} { font-size: ${htmlTag.fontSize}rem; } `);
+    cssArray.push(`${htmlTag.tag}.${htmlTag.class} {\nfont-size: ${htmlTag.fontSize}rem;\n}\n\n`);
   });
   
   const cssString = cssArray.reduce((finalString, currentString) => {
     return finalString + currentString;
   });
   typeScale.cssOutput = cssString;
+
+  // run the display sample method to actually show our computed sample text
+  typeScale.displaySample(typeScale.userChoices.font);
 };
 
+typeScale.displaySample = function (font) {
+  // grab the sample-text div and add the html to it that's returned from the update sample text method
+  $('#sample-text').html(typeScale.updateSampleText(font));
+
+  // if it's not already visible, show the 'get css' button
+  $('#button-get-css').removeClass('hidden');
+};
 
 typeScale.updateUserChoices = function(selectionType, selection) {
   // put that selected value in the appropriate attribute of our userChoices object
@@ -95,10 +102,6 @@ typeScale.updateUserChoices = function(selectionType, selection) {
   if (typeScale.userChoices.font !== '' && typeScale.userChoices.scale !== '') {
     // run the update font sizes method, passing it the choice of scale
     typeScale.updateFontSizes(typeScale.userChoices.scale);
-    // update our css to reflect the new font sizes
-    typeScale.updateCSS();
-    // run the display sample method to actually show our computed sample text
-    typeScale.displaySample(typeScale.userChoices.font);
   }
 };
 
