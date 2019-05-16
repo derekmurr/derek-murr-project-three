@@ -1,3 +1,15 @@
+html {
+  --demo-font-size-small: 1rem;
+  --demo-font-size-p: 1rem;
+  --demo-font-size-h6: 1rem;
+  --demo-font-size-h5: 1rem;
+  --demo-font-size-h4: 1rem;
+  --demo-font-size-h3: 1rem;
+  --demo-font-size-h2: 1rem;
+  --demo-font-size-h1: 1rem;
+  --demo-font-family: 'Courier';
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
   display: block;
 }
@@ -224,11 +236,6 @@ select {
   text-align: right;
 }
 
-.demo {
-  margin: 0;
-  line-height: .75em;
-}
-
 .hidden {
   display: none;
 }
@@ -256,5 +263,43 @@ select {
   overflow: hidden;
   text-overflow: clip;
   white-space: nowrap;
+}
+
+.demo {
+  margin: 0;
+  line-height: .75em;
+  font-family: var(--demo-font-family);
+}
+
+.demo-small {
+  font-size: var(--demo-font-size-small);
+}
+
+.demo-body {
+  font-size: var(--demo-font-size-p);
+}
+
+.demo-h6 {
+  font-size: var(--demo-font-size-h6);
+}
+
+.demo-h5 {
+  font-size: var(--demo-font-size-h5);
+}
+
+.demo-h4 {
+  font-size: var(--demo-font-size-h4);
+}
+
+.demo-h3 {
+  font-size: var(--demo-font-size-h3);
+}
+
+.demo-h2 {
+  font-size: var(--demo-font-size-h2);
+}
+
+.demo-h1 {
+  font-size: var(--demo-font-size-h1);
 }
 /*# sourceMappingURL=styles.css.map */
