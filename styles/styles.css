@@ -193,13 +193,19 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 body {
   font-size: 125%;
+  font-family: 'Lato', sans-serif;
+}
+
+.main-title {
+  font-family: 'Permanent Marker', cursive;
 }
 
 .intro p {
   line-height: 1.5;
 }
 
-.button-begin {
+.button {
+  font-family: 'Permanent Marker', cursive;
   padding: .5em 2em;
 }
 
@@ -207,6 +213,19 @@ body {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.sample-block {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 4fr;
+      grid-template-columns: 1fr 4fr;
+  grid-gap: 1rem;
+}
+
+.right-column {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
 }
 
 .choice-form {
@@ -219,7 +238,8 @@ body {
 }
 
 fieldset {
-  width: 30%;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
   border: none;
   padding: 0;
 }
@@ -244,6 +264,7 @@ select {
   list-style: none;
   margin: 0;
   padding: 0;
+  grid-column: 1 / -1;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4fr;

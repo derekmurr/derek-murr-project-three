@@ -1,12 +1,18 @@
 body {
   font-size: 125%;
+  font-family: 'Lato', sans-serif;
+}
+
+.main-title {
+  font-family: 'Permanent Marker', cursive;
 }
 
 .intro p {
   line-height: 1.5;
 }
 
-.button-begin {
+.button {
+  font-family: 'Permanent Marker', cursive;
   padding: .5em 2em;
 }
 
@@ -16,16 +22,25 @@ body {
   margin: 0 auto;
 }
 
+.sample-block {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 1rem;
+}
+
+.right-column {
+  grid-column-start: 2;
+}
+
 .choice-form {
   width: 100%;
   padding: 0;
   margin: 3rem 0;
   display: flex;
-
 }
 
 fieldset {
-  width: 30%;
+  flex-basis: 50%;
   border: none;
   padding: 0;
 }
@@ -50,6 +65,7 @@ select {
   list-style: none;
   margin: 0;
   padding: 0;
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 1rem;
@@ -66,4 +82,5 @@ select {
   text-overflow: clip;
   white-space: nowrap;
 }
+
 

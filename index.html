@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Type Scale Generator</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Permanent+Marker" rel="stylesheet">
   <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
   <header>
     <div class="wrapper">
-      <h1>Type Scale Generator</h1>
+      <h1 class="main-title">Type Scale Generator</h1>
     </div>
   </header>
 
@@ -18,41 +19,51 @@
     <div class="wrapper">
       <div id="intro" class="intro">
         <p>Are you a developer, but you ain’t no designer? Do you need to style your text and just need it to look good but don’t want to think too hard about it? When designers start talking about “proportion” and “vertical rhythm” do you break out in hives? Type Scale Generator has got your back, friend. Just choose a scale and bam: you’ve got sizes for body copy and every level of heading that are gonna look great together. Then just copy those sizes into your project’s CSS, and get on with your life. Easy peasy.</p>
-        <button id="button-begin" class="button-begin">Let’s get started!</button>
+
+        <button id="button-begin" class="button button-begin">Let’s get started!</button>
       </div>
+
       <div id="tips" class="intro hidden">
         <p>Just choose a scale and a font style, and we’ll do the rest. These scales are all based on the most commonly used ones in print design - most of them are based on music. Basically, play around, pick one that feels right for your project!</p>
+
         <p>Pro tip: the further down the list of scales you go, the more dramatic the difference between your body copy and headings. So choices further down the list are better if your headlines are short and punchy, while wordier sites should stay close to the top of the list!</p>
       </div>
-      <div id="sample-block" class="hidden">
-        <form action="" id="choice-form" class="choice-form">
-          <fieldset>
-            <label for="scale-choice">Choose a scale:</label>
-            <select name="scale-choice" id="scale-choice" class="choice-dropdown" data-choice-type="scale">
-              <option value=""></option>
-              <option value="minSecond">Minor Second</option>
-              <option value="majSecond">Major Second</option>
-              <option value="minThird">Minor Third</option>
-              <option value="majThird">Major Third</option>
-              <option value="perFourth">Perfect Fourth</option>
-              <option value="augFourth">Augmented Fourth</option>
-              <option value="golden">Golden Ratio</option>
-            </select>
-          </fieldset>
-          <fieldset>
-            <label for="font-choice">Choose a font:</label>
-            <select name="font-choice" id="font-choice" class="choice-dropdown" data-choice-type="font">
-              <option value=""></option>
-              <option value="arial">Sans-serif</option>
-              <option value="georgia">Serif</option>
-            </select>
-          </fieldset>
-        </form>
+
+      <div id="sample-block" class="sample-block hidden">
+        <div class="right-column">
+          <form action="" id="choice-form" class="choice-form">
+            <fieldset>
+              <label for="scale-choice">Choose a scale:</label>
+              <select name="scale-choice" id="scale-choice" class="choice-dropdown" data-choice-type="scale">
+                <option value=""></option>
+                <option value="minSecond">Minor Second</option>
+                <option value="majSecond">Major Second</option>
+                <option value="minThird">Minor Third</option>
+                <option value="majThird">Major Third</option>
+                <option value="perFourth">Perfect Fourth</option>
+                <option value="augFourth">Augmented Fourth</option>
+                <option value="golden">Golden Ratio</option>
+              </select>
+            </fieldset>
+
+            <fieldset>
+              <label for="font-choice">Choose a font:</label>
+              <select name="font-choice" id="font-choice" class="choice-dropdown" data-choice-type="font">
+                <option value=""></option>
+                <option value="arial">Sans-serif</option>
+                <option value="georgia">Serif</option>
+              </select>
+            </fieldset>
+          </form>
+        </div>
 
         <ul id="sample-text" class="sample-text">
 
         </ul>
-        <button id="button-get-css" class="button-get-css hidden">Grab the CSS!</button>
+
+        <div class="right-column">
+          <button id="button-get-css" class="button button-get-css hidden">Grab the CSS!</button>
+        </div>
       </div>
     </div>
   </main>
