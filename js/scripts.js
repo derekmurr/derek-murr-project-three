@@ -102,6 +102,19 @@ typeScale.updateUserChoices = function(selectionType, selection) {
   }
 };
 
+typeScale.copyToClipboard = function(string) {
+  //copy to clipboard function adapted from Angelos Chalaris, hackernoon.com
+  const element = document.createElement('textarea');
+  element.value = string;
+  element.setAttribute('readonly', '');
+  element.style.position = 'absolute';
+  element.style.left = '-9999px';
+  document.body.appendChild(element);
+  element.select();
+  document.execCommand('copy');
+  document.body.removeChild(element);
+};
+
 // set up our event handlers on the two dropdown menus
 typeScale.registerEvents = function() {
   // we'll do this on change so there's no need for a submit button
@@ -121,7 +134,7 @@ typeScale.registerEvents = function() {
   });
 
   $('#button-get-css').on('click', function() {
-    console.log(typeScale.cssOutput);
+    typeScale.copyToClipboard(typeScale.cssOutput);
   })
 };
 
