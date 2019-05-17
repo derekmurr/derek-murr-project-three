@@ -42,20 +42,37 @@ typeScale.registerEvents = () => {
 
   // event handler for the let's get started button
   $('#button-begin').on('click', function () {
-    $(this).toggleClass('hidden');
-    $('#sample-block').toggleClass('hidden');
-    $('#intro').toggleClass('hidden');
-    $('#tips').toggleClass('hidden');
+    $('#intro').fadeOut(function() {
+      $('#tips').fadeIn(function() {
+        $('#sample-block').fadeIn();
+      });
+    });
   });
 
   $('#button-get-css').on('click', function () {
+    typeScale.animateCSS('#button-get-css', 'jello');
     typeScale.copyToClipboard(typeScale.cssOutput);
   })
 };
 
+typeScale.animateCSS = (element, animationName) => {
+  // toggle the bounce animation for the 'get css' button
+  // function from the docs of animate.css, https://github.com/daneden/animate.css
+  const node = document.querySelector(element);
+  node.classList.add('animated', animationName);
+  
+  function handleAnimationEnd() {
+    node.classList.remove('animated', animationName);
+    node.removeEventListener('animationend', handleAnimationEnd);
+    console.log(node.classList);
+  }
+  
+  node.addEventListener('animationend', handleAnimationEnd);
+};
+
 // functionality for the 'get css' button
 typeScale.copyToClipboard = (string) => {
-  //copy to clipboard function adapted from Angelos Chalaris, hackernoon.com
+  //copy to clipboard function from Angelos Chalaris, hackernoon.com
   const element = document.createElement('textarea');
   element.value = string;
   element.setAttribute('readonly', '');

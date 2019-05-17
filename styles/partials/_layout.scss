@@ -12,105 +12,10 @@ body {
   line-height: 1.6;
 }
 
-.main-title {
-  position: relative;
-  font-family: $heading-font;
-  font-size: 5.61rem;
-  color: $base-color;
-  text-shadow: -3px 3px 0 $highlight-color;
-  text-align: center;
-  margin-bottom: 4rem;
-  line-height: .75;
-  &::before,
-  &::after {
-    position: absolute;
-    display: block;
-    // width: 17vw;
-    // height: 5.7vw;
-    top: 50%;
-    font-size: 2.1rem;
-    color: $accent-color;
-    transform: rotate(-7deg);
-  }
-  &::before {
-    content: "Handy!";
-    left: 0;
-    // background: url("../assets/convenient.svg");
-  }
-  &::after {
-    content: "Dandy!";
-    right: 0;
-    // background: url("../assets/simple.svg");
-  }
-}
-
-p.intro {
-  font-size: 1.33rem;
-}
-
-.rotate {
-  display: block;
-  transform: rotate(-7deg);
-}
-
-.button {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
-  background-color: transparent;
-  display: block;
-  margin: 2rem auto 3rem;
-  font-family: $heading-font;
-  font-size: 3.16rem;
-  color: $accent-color;
-  text-shadow: -3px 3px 0 $highlight-color;
-  padding: .5em 2em;
-}
-
 .wrapper {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
-}
-
-.choice-form {
-  width: 100%;
-  padding: 0;
-  margin: 3rem 0;
-  display: flex;
-}
-
-label, 
-.choice-dropdown {
-  display: block;
-}
-
-.choice-dropdown {
-  width: 90%;
-  margin: 0 auto;
-}
-
-label {
-  margin-bottom: .5em;
-  font-family: $heading-font;
-  font-size: 1.78rem;
-  text-align: center;
-}
-
-fieldset {
-  flex-basis: 50%;
-  border: none;
-  padding: 0;
-}
-
-.sample-label {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.hidden {
-  display: none;
 }
 
 .sample-text {
@@ -140,5 +45,4 @@ fieldset {
   text-overflow: clip;
   white-space: nowrap;
 }
-
 
