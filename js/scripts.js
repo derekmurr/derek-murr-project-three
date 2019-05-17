@@ -105,8 +105,8 @@ typeScale.updateFontSizes = (chosenScale) => {
 
   // use the ratio to set the sizes of each html element  
   for (let i = 0; i < typeScale.htmlTagSizes.length; i++) {
-    // current size = the scale ratio to the power of the current size factor, rounded to two decimals
-    // it's i - 1 because our body copy is second in the array, and we want it to always be 1rem, so it should have a scale factor of zero, while we want the first array item to be a smaller size option, so its scale factor is negative one.
+    // current size = the chosen scale ratio, to the power of the current size factor, rounded to two decimals
+    // it's i - 1 because our body copy is second in the array, and we want it to always be 1rem, so it should have a scale factor of zero, while we want the first array item to be a smaller size option, so its scale factor is negative.
     typeScale.htmlTagSizes[i].fontSize = (Math.pow(ratio, i-1) ).toFixed(2);
   }
 

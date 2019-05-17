@@ -1,0 +1,34 @@
+@media (max-width: 768px) {
+  .main-title::before,
+  .main-title::after {
+    content: "*";
+    font-size: 3.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 4.2rem;
+  }
+}
+
+@media (max-width: 475px) {
+  body {
+    border: 1.2rem solid $highlight-color;
+  }
+
+  .main-title {
+    font-size: 3.6rem;
+    &::before {
+      display: none;
+    }
+    &::after {
+      top: 110%;
+      right: 50%;
+    }
+  }
+
+  .intro p {
+    font-size: 1.13rem;
+  }
+}

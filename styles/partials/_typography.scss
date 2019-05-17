@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'scratchregular';
+    src: url('../assets/Scratch-webfont.woff2') format('woff2'),
+         url('../assets/Scratch-webfont.woff') format('woff');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
 .main-title {
   position: relative;
   font-family: $heading-font;
@@ -6,7 +15,7 @@
   text-shadow: -3px 3px 0 $highlight-color;
   text-align: center;
   margin-bottom: 4rem;
-  line-height: .75;
+  line-height: .95;
   &::before,
   &::after {
     position: absolute;
@@ -17,16 +26,16 @@
     transform: rotate(-7deg);
   }
   &::before {
-    content: "Handy!";
+    content: "HANDY!";
     left: 0;
   }
   &::after {
-    content: "Dandy!";
+    content: "DANDY!";
     right: 0;
   }
 }
 
-p.intro {
+.intro p {
   font-size: 1.33rem;
 }
 
