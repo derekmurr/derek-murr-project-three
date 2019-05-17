@@ -192,20 +192,71 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 body {
+  min-height: 100vh;
+  background-image: url("../assets/paper-background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2rem solid rgba(255, 249, 70, 0.65);
   font-size: 125%;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
+  color: #1717c8;
+  line-height: 1.6;
 }
 
 .main-title {
-  font-family: 'Permanent Marker', cursive;
+  position: relative;
+  font-family: "Permanent Marker", cursive;
+  font-size: 5.61rem;
+  color: #1717c8;
+  text-shadow: -3px 3px 0 rgba(255, 249, 70, 0.65);
+  text-align: center;
+  margin-bottom: 4rem;
+  line-height: .75;
 }
 
-.intro p {
-  line-height: 1.5;
+.main-title::before, .main-title::after {
+  position: absolute;
+  display: block;
+  top: 50%;
+  font-size: 2.1rem;
+  color: #c10c0c;
+  -webkit-transform: rotate(-7deg);
+          transform: rotate(-7deg);
+}
+
+.main-title::before {
+  content: "Handy!";
+  left: 0;
+}
+
+.main-title::after {
+  content: "Dandy!";
+  right: 0;
+}
+
+p.intro {
+  font-size: 1.33rem;
+}
+
+.rotate {
+  display: block;
+  -webkit-transform: rotate(-7deg);
+          transform: rotate(-7deg);
 }
 
 .button {
-  font-family: 'Permanent Marker', cursive;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  display: block;
+  margin: 2rem auto 3rem;
+  font-family: "Permanent Marker", cursive;
+  font-size: 3.16rem;
+  color: #c10c0c;
+  text-shadow: -3px 3px 0 rgba(255, 249, 70, 0.65);
   padding: .5em 2em;
 }
 
@@ -213,19 +264,6 @@ body {
   width: 90%;
   max-width: 1000px;
   margin: 0 auto;
-}
-
-.sample-block {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 4fr;
-      grid-template-columns: 1fr 4fr;
-  grid-gap: 1rem;
-}
-
-.right-column {
-  -ms-grid-column: 2;
-      grid-column-start: 2;
 }
 
 .choice-form {
@@ -237,6 +275,23 @@ body {
   display: flex;
 }
 
+label,
+.choice-dropdown {
+  display: block;
+}
+
+.choice-dropdown {
+  width: 90%;
+  margin: 0 auto;
+}
+
+label {
+  margin-bottom: .5em;
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.78rem;
+  text-align: center;
+}
+
 fieldset {
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
@@ -244,16 +299,9 @@ fieldset {
   padding: 0;
 }
 
-label,
-select {
-  display: block;
-}
-
 .sample-label {
-  font-family: .8rem;
-  font-weight: 200;
+  font-size: 1rem;
   margin: 0;
-  text-align: right;
 }
 
 .hidden {
@@ -264,7 +312,6 @@ select {
   list-style: none;
   margin: 0;
   padding: 0;
-  grid-column: 1 / -1;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 4fr;
@@ -276,10 +323,17 @@ select {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  text-align: center;
+  background: url("../assets/arrow-01.svg");
+  background-repeat: no-repeat;
+  background-position: center right;
 }
 
 .sample-text-box {
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #fafafa;
+  -webkit-box-shadow: -3px 3px 3px 0 rgba(255, 249, 70, 0.65);
+          box-shadow: -3px 3px 3px 0 rgba(255, 249, 70, 0.65);
+  color: #1717c8;
   padding: .5em;
   overflow: hidden;
   text-overflow: clip;

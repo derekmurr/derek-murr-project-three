@@ -1,18 +1,70 @@
 body {
+  min-height: 100vh;
+  background-image: url("../assets/paper-background.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2rem solid $highlight-color;
+
   font-size: 125%;
-  font-family: 'Lato', sans-serif;
+  font-family: $base-font;
+  color: $base-color;
+  line-height: 1.6;
 }
 
 .main-title {
-  font-family: 'Permanent Marker', cursive;
+  position: relative;
+  font-family: $heading-font;
+  font-size: 5.61rem;
+  color: $base-color;
+  text-shadow: -3px 3px 0 $highlight-color;
+  text-align: center;
+  margin-bottom: 4rem;
+  line-height: .75;
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    // width: 17vw;
+    // height: 5.7vw;
+    top: 50%;
+    font-size: 2.1rem;
+    color: $accent-color;
+    transform: rotate(-7deg);
+  }
+  &::before {
+    content: "Handy!";
+    left: 0;
+    // background: url("../assets/convenient.svg");
+  }
+  &::after {
+    content: "Dandy!";
+    right: 0;
+    // background: url("../assets/simple.svg");
+  }
 }
 
-.intro p {
-  line-height: 1.5;
+p.intro {
+  font-size: 1.33rem;
+}
+
+.rotate {
+  display: block;
+  transform: rotate(-7deg);
 }
 
 .button {
-  font-family: 'Permanent Marker', cursive;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  display: block;
+  margin: 2rem auto 3rem;
+  font-family: $heading-font;
+  font-size: 3.16rem;
+  color: $accent-color;
+  text-shadow: -3px 3px 0 $highlight-color;
   padding: .5em 2em;
 }
 
@@ -22,21 +74,28 @@ body {
   margin: 0 auto;
 }
 
-.sample-block {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-gap: 1rem;
-}
-
-.right-column {
-  grid-column-start: 2;
-}
-
 .choice-form {
   width: 100%;
   padding: 0;
   margin: 3rem 0;
   display: flex;
+}
+
+label, 
+.choice-dropdown {
+  display: block;
+}
+
+.choice-dropdown {
+  width: 90%;
+  margin: 0 auto;
+}
+
+label {
+  margin-bottom: .5em;
+  font-family: $heading-font;
+  font-size: 1.78rem;
+  text-align: center;
 }
 
 fieldset {
@@ -45,16 +104,9 @@ fieldset {
   padding: 0;
 }
 
-label, 
-select {
-  display: block;
-}
-
 .sample-label {
-  font-family: .8rem;
-  font-weight: 200;
+  font-size: 1rem;
   margin: 0;
-  text-align: right;
 }
 
 .hidden {
@@ -65,7 +117,6 @@ select {
   list-style: none;
   margin: 0;
   padding: 0;
-  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-gap: 1rem;
@@ -73,10 +124,17 @@ select {
 
 .label-box {
   align-self: center;
+  text-align: center;
+  background: url("../assets/arrow-01.svg");
+  background-repeat: no-repeat;
+  background-position: center right;
+
 }
 
 .sample-text-box {
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #fafafa;
+  box-shadow: -3px 3px 3px 0 $highlight-color;
+  color: $base-color;
   padding: .5em;
   overflow: hidden;
   text-overflow: clip;
