@@ -28,9 +28,35 @@ typeScale.setUpVariables = () => {
   };
 
   typeScale.cssOutput = ``;
+
+  typeScale.apiKey = 'AIzaSyDGTNXo9PFG5_AEnFedft1-D9Tr1DTC07Y';
+  typeScale.endpoint = 'https://www.googleapis.com/webfonts/v1/webfonts';
 };
 
-// set up our event handlers on the two dropdown menus, the 'get started' button & the 'get css' button
+// AJAX call to get the most up-to-date list of available Google Fonts
+typeScale.getFontList = () => {
+  $.ajax({
+    url: typeScale.endpoint,
+    method: 'GET',
+    dataType: 'json',
+    data: {
+      key: typeScale.apiKey
+    }
+  })
+    .then((fontList) => {
+      typeScale.buildFontMenu(fontList.items);
+    });
+};
+
+// using the array of fonts from the google fonts object, add all the font menu options
+typeScale.buildFontMenu = (fontArray) => {
+  const $menu = $('#font-choice');
+  fontArray.forEach((fontObject) => {
+    $($menu).append(`<option value="${fontObject.family}">${fontObject.family}</option>`);
+  });
+};
+
+// set up our event handlers on the two dropdown menus & the 'get started' & 'get css' buttons
 typeScale.registerEvents = () => {
   // we'll do this on change so there's no need for a submit button
   $('.choice-dropdown').on('change', function () {
@@ -55,12 +81,14 @@ typeScale.registerEvents = () => {
   })
 };
 
+// handle the bounce animation when clicking the 'get css' button
 typeScale.animateCSS = (element, animationName) => {
   // toggle the bounce animation for the 'get css' button
   // function from the docs of animate.css, https://github.com/daneden/animate.css
   const node = document.querySelector(element);
   node.classList.add('animated', animationName);
   
+  // wait for the animation to end, then remove the css style and the event listener
   function handleAnimationEnd() {
     node.classList.remove('animated', animationName);
     node.removeEventListener('animationend', handleAnimationEnd);
@@ -84,7 +112,8 @@ typeScale.copyToClipboard = (string) => {
   document.body.removeChild(element);
 };
 
-typeScale.loadGoogleFonts = (chosenFont) => {
+// adds the user's selected font to the page stylesheet so it loads & displays
+typeScale.loadGoogleFont = (chosenFont) => {
   let newURL = ``;
   // grab the existing url from our google fonts stylesheet link
   let fontURL = $('link[data-link-type="gfonts"]').attr('href');
@@ -112,12 +141,13 @@ typeScale.updateUserChoices = (selectionType, selection) => {
   // if the user has selected both options, we have enough info to update and display our sample text
   if (typeScale.userChoices.font !== '' && typeScale.userChoices.scale !== '') {
     // amend our google stylesheet link to load the requested font
-    typeScale.loadGoogleFonts(typeScale.userChoices.font);
+    typeScale.loadGoogleFont(typeScale.userChoices.font);
     // run the update font sizes method, passing it the choice of scale
     typeScale.updateFontSizes(typeScale.userChoices.scale);
   }
 };
 
+// the one that does the math: changes the rem values for each sample font
 typeScale.updateFontSizes = (chosenScale) => {
   //the choice of scale determines the ratio used in the math
   const ratio = typeScale.typeRatios[chosenScale];
@@ -133,6 +163,7 @@ typeScale.updateFontSizes = (chosenScale) => {
   typeScale.updateCSS();
 };
 
+// updates the sample fonts css for output to the clipboard
 typeScale.updateCSS = () => {
   let tagArray = typeScale.htmlTagSizes;
   let cssArray = [];
@@ -149,6 +180,7 @@ typeScale.updateCSS = () => {
   typeScale.displaySample(typeScale.userChoices.font);
 };
 
+// triggers showing our sample text
 typeScale.displaySample = (font) => {
   // if it's not already visible, show the 'get css' button
   $('#button-get-css').removeClass('hidden');
@@ -157,6 +189,7 @@ typeScale.displaySample = (font) => {
   typeScale.updateSampleText();
 };
 
+// actually updates the dom elements that contain our displayed sample text
 typeScale.updateSampleText = () => {
   // tag sizes array is calculated from smallest to biggest, but we want to display it to the user from biggest to smallest, so let's make a working duplicate of that array 
   let tagArray = typeScale.htmlTagSizes;
@@ -182,6 +215,7 @@ typeScale.updateSampleText = () => {
   typeScale.applyCSS(tagArray);
 };
 
+// updates the css variables that hold the sample font choice and sizes
 typeScale.applyCSS = (tagArray) => {
   const $html = $('html');
   $($html).css(`--demo-font-family`, typeScale.userChoices.font);
@@ -190,9 +224,10 @@ typeScale.applyCSS = (tagArray) => {
   });
 };
 
-// all this does is run the function to set up event handlers & initialize our variables
+// set up event handlers & initialize our variables
 typeScale.init = () => {
   typeScale.setUpVariables();
+  typeScale.getFontList();
   typeScale.registerEvents();
 }
 
