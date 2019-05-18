@@ -84,6 +84,23 @@ typeScale.copyToClipboard = (string) => {
   document.body.removeChild(element);
 };
 
+typeScale.loadGoogleFonts = (chosenFont) => {
+  let newURL = ``;
+  // grab the existing url from our google fonts stylesheet link
+  let fontURL = $('link[data-link-type="gfonts"]').attr('href');
+  // regex to check if the existing URL has a google font already added - it's between | and &display=swap, excluding it from Lato, already loaded as our app's body text
+  const re = /(\|)(.*?)(\&)/g;
+  if (re.exec(fontURL)) {
+    // if there's a match, then replace what's between | and & with the new choice
+    newURL = fontURL.replace(re, `|${chosenFont}&`);
+  } else {
+    // if no match, then we're free to just append the added font to the url string
+    newURL = fontURL + `|${chosenFont}&display=swap`;
+  }
+  // update our google fonts stylesheet link with our new url specifying the new font
+  $('link[data-link-type="gfonts"]').attr('href', newURL);
+}
+
 // runs when dropdown menus register a selection
 typeScale.updateUserChoices = (selectionType, selection) => {
   // put that selected value in the appropriate attribute of our userChoices object
@@ -94,6 +111,8 @@ typeScale.updateUserChoices = (selectionType, selection) => {
   }
   // if the user has selected both options, we have enough info to update and display our sample text
   if (typeScale.userChoices.font !== '' && typeScale.userChoices.scale !== '') {
+    // amend our google stylesheet link to load the requested font
+    typeScale.loadGoogleFonts(typeScale.userChoices.font);
     // run the update font sizes method, passing it the choice of scale
     typeScale.updateFontSizes(typeScale.userChoices.scale);
   }
