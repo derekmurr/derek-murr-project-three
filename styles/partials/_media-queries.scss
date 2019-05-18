@@ -1,14 +1,46 @@
 @media (max-width: 768px) {
   .main-title::before,
   .main-title::after {
-    content: "*";
-    font-size: 3.6rem;
+    content: "";
+    width: 5vw;
+    height: 5vw;
+    background-image: url("../assets/star-red.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media (max-width: 675px) {
+  .button {
+    font-size: 2.1rem;
   }
 }
 
 @media (max-width: 600px) {
   .main-title {
     font-size: 4.2rem;
+  }
+
+  .choice-form {
+    flex-direction: column;
+  }
+
+  fieldset {
+    flex-basis: 100%;
+    &:last-of-type {
+      margin-top: 2rem;
+    }
+  }
+
+  .label-box {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .sample-text-box {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
   }
 }
 

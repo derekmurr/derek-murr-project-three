@@ -20,10 +20,10 @@
   &::after {
     position: absolute;
     display: block;
+    transform: rotate(-7deg);
     top: 50%;
     font-size: 2.1rem;
     color: $accent-color;
-    transform: rotate(-7deg);
   }
   &::before {
     content: "HANDY!";
