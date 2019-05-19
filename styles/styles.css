@@ -184,7 +184,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 
 @font-face {
   font-family: 'scratchregular';
-  src: url("../assets/Scratch-webfont.woff2") format("woff2"), url("../assets/Scratch-webfont.woff") format("woff");
+  src: url("../assets/Scratch-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -290,6 +290,7 @@ body {
 .copied-success-message {
   position: absolute;
   width: 30%;
+  min-width: 200px;
   left: 50%;
   bottom: 50%;
   -webkit-transform: translateX(-50%);
@@ -506,7 +507,7 @@ fieldset {
         flex-basis: 100%;
   }
   fieldset:last-of-type {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
   .label-box {
     grid-column: 1 / -1;
