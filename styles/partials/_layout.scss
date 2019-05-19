@@ -42,3 +42,22 @@ body {
   white-space: nowrap;
 }
 
+.get-css-block {
+  position: relative;
+}
+
+.copied-success-message {
+  position: absolute;
+  width: 30%;
+  left: 50%;
+  bottom: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  padding: .5rem 2rem;
+  text-align: center;
+  background-color: $base-color;
+  box-shadow: -3px 3px 3px 0 $highlight-color;
+  color: #fafafa;
+  font-size: 1.3rem;
+}
+

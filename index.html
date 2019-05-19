@@ -53,9 +53,6 @@
               <label for="font-choice" class="label-two">Choose a font:</label>
               <select name="font-choice" id="font-choice" class="choice-dropdown" data-choice-type="font">
                 <option value=""></option>
-                <!-- <option value="arial">Sans-serif</option>
-                <option value="georgia">Serif</option>
-                <option value="Stylish">Stylish</option> -->
               </select>
             </fieldset>
           </form>
@@ -63,12 +60,18 @@
         <ul id="sample-text" class="sample-text">
         </ul>
 
-        <button id="button-get-css" class="button button-get-css hidden">Copy the CSS!</button>
+        <div class="get-css-block">
+          <button id="button-get-css" class="button button-get-css hidden">Copy the CSS!</button>
+          <div id="copied-success-message" class="copied-success-message hidden">
+            CSS copied to clipboard!
+          </div>
+        </div>
       </div>
     </div>
   </main>
 
   <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
+  <script src="./js/env.js"></script>
   <script src="./js/scripts.js"></script>
 </body>
 </html>

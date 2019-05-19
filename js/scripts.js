@@ -29,8 +29,8 @@ typeScale.setUpVariables = () => {
 
   typeScale.cssOutput = ``;
 
-  typeScale.apiKey = 'AIzaSyDGTNXo9PFG5_AEnFedft1-D9Tr1DTC07Y';
-  typeScale.endpoint = 'https://www.googleapis.com/webfonts/v1/webfonts';
+  typeScale.apiKey = env.key;
+  typeScale.endpoint = env.endpoint;
 };
 
 // AJAX call to get the most up-to-date list of available Google Fonts
@@ -91,8 +91,15 @@ typeScale.animateCSS = (element, animationName) => {
   // wait for the animation to end, then remove the css style and the event listener
   function handleAnimationEnd() {
     node.classList.remove('animated', animationName);
+
+    //also, once the animation ends, briefly show a message saying that the css was copied
+    $('#copied-success-message').fadeIn('fast', function () {
+      setTimeout(function () {
+        $('#copied-success-message').fadeOut('fast');
+      }, 3000);
+    });
+
     node.removeEventListener('animationend', handleAnimationEnd);
-    console.log(node.classList);
   }
   
   node.addEventListener('animationend', handleAnimationEnd);

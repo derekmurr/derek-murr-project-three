@@ -283,6 +283,27 @@ body {
   white-space: nowrap;
 }
 
+.get-css-block {
+  position: relative;
+}
+
+.copied-success-message {
+  position: absolute;
+  width: 30%;
+  left: 50%;
+  bottom: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 20;
+  padding: .5rem 2rem;
+  text-align: center;
+  background-color: #1717c8;
+  -webkit-box-shadow: -3px 3px 3px 0 rgba(255, 249, 70, 0.65);
+          box-shadow: -3px 3px 3px 0 rgba(255, 249, 70, 0.65);
+  color: #fafafa;
+  font-size: 1.3rem;
+}
+
 .button {
   -moz-appearance: none;
   -webkit-appearance: none;
