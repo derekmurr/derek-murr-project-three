@@ -205,7 +205,13 @@ typeScale.updateSampleText = () => {
   let outputTextArray = [];
   tagArray.forEach(htmlTag => {
     // for each item in our tag sizes array, add a string to our text array with the right text and values
-    outputTextArray.push(`<li class="label-box"><p class="sample-label">${htmlTag.tag}: ${htmlTag.fontSize} rem</p></li><li class="sample-text-box"><${htmlTag.tag} class="demo demo-${htmlTag.class}">Lorem ipsum dolor sit amet</${htmlTag.tag}></li>`);
+    outputTextArray.push(`<li class="label-box">
+    <p class="sample-label" aria-hidden="true">${htmlTag.tag}: ${htmlTag.fontSize} rem</p>
+    <span class="visually-hidden">HTML tag ${htmlTag.tag} has a font size of ${htmlTag.fontSize}rem.</span>
+    </li>
+    <li class="sample-text-box" aria-hidden="true">
+    <${htmlTag.tag} class="demo demo-${htmlTag.class}">Lorem ipsum dolor sit amet</${htmlTag.tag}>
+    </li>`);
   });
   // reverse that text array so it goes from biggest to smallest, ie, the order we want the sample to display
   outputTextArray.reverse();

@@ -1,16 +1,19 @@
 .button {
+  display: block;
+
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   border: none;
   background-color: transparent;
-  display: block;
   margin: 2rem auto 3rem;
+  padding: .5em 2em;
+
+  color: $accent-color;
   font-family: $heading-font;
   font-size: 3.16rem;
-  color: $accent-color;
   text-shadow: -3px 3px 0 $highlight-color;
-  padding: .5em 2em;
+
   &:focus,
   &:hover {
     color: $base-color;
@@ -22,10 +25,10 @@
 }
 
 .choice-form {
+  display: flex;
   width: 100%;
   padding: 0;
   margin: 3rem 0;
-  display: flex;
 }
 
 label, 
@@ -39,10 +42,10 @@ label,
   appearance: none;
   width: 90%;
   margin: 0 auto;
+  padding: .5em 1em;
 
   background-color: #fafafa;
   color: $base-color;
-  padding: .5em 1em;
   border: 2px solid $base-color;
   border-radius: 4px;
   box-shadow: -4px 4px 0 $highlight-color;
@@ -61,8 +64,8 @@ label {
 }
 
 .button-get-css {
-  margin-top: 4.5rem;
   position: relative;
+  margin-top: 4.5rem;
   font-size: 2.1rem;
   &::before {
     content: "3";
@@ -82,19 +85,20 @@ label {
 .label-one::before,
 .label-two::before,
 .button-get-css::before {
-  font-family: $heading-font;
-  font-size: 2.37rem;
-  color: #fafafa;
   position: absolute;
-  display: block;
+  display: flex;
+  width: 4rem;
+  height: 4rem;
   bottom: 90%;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
+
   align-content: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  font-family: $heading-font;
+  font-size: 2.37rem;
+  color: #fafafa;
+  
   background-image: url("../assets/starburst.svg");
   background-position: center center;
   background-repeat: no-repeat;
